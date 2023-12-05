@@ -1,15 +1,16 @@
 n,m=map(int, input().split(" "))
+visit=[[0]*m for _ in range(n)]
 a,b,d=map(int, input().split(" "))
 
-
+visit[a][b]=1
 count=1
 gmap=[]
 
-visit=[[0 for column in range(m)] for row in range(n)]
+#visit=[[0 for column in range(m)] for row in range(n)]
 for i in range(n):
     temp=list(map(int, input().split()))
     gmap.append(temp)
-visit[a][b]=1
+
 na=0
 nb=0
 while True:
