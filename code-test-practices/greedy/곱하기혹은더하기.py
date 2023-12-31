@@ -1,4 +1,4 @@
-s=str(input())
+s=input()
 result=0
 for x in s:
     if result<=1 or int(x)<=1:
