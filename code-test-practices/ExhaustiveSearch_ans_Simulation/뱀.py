@@ -1,14 +1,14 @@
 def check_wall(map1, snake):
-    if snake[0][0]>=len(map1) or snake[0][1]>=len(map1) or snake[0][0]<0 or snake[0][1]<0: 
+    if snake[0][0]>=len(map1) or snake[0][1]>=len(map1) or snake[0][0]<1 or snake[0][1]<1: 
         return True
 def check_self_construction(map1, snake):
     if [snake[0][0],snake[0][1],0] in snake[1:] or [snake[0][0],snake[0][1],1] in snake[1:] or [snake[0][0],snake[0][1],2] in snake[1:] or[snake[0][0],snake[0][1],3] in snake[1:]:
         return True
 def change_direction(snake_head, direction):
     if direction=='D': 
-        snake_head[2]=snake_head[2]+1 if snake_head[2]<3 else 0        
+        snake_head[2]=(snake_head[2]+1)%4        
     else:
-        snake_head[2]=snake_head[2]-1 if snake_head[2]>0 else 3
+        snake_head[2]=(snake_head[2]-1)%4
     return snake_head
 def move_step(map1, snake):
     if snake[0][2]==0:
@@ -29,17 +29,16 @@ def move_step(map1, snake):
 
 n=int(input())
 k=int(input())
-map1=[[0]*n  for _ in range(n)]
+map1=[[0]*(n+1)  for _ in range(n+1)]
 for _ in range(k):
     x,y= map(int,input().split())
-    map1[x-1][y-1]=1
+    map1[x][y]=1
 l=int(input())
 move=[]
 for _ in range(l):
-    temp=input().split()
-    temp[0]=int(temp[0])
-    move.append(temp)
-snake_head=[0,0,0]
+    x,c=input().split()
+    move.append([int(x),c])
+snake_head=[1,1,0]
 snake=[snake_head]
 count=0
 time, direction=move.pop(0)
