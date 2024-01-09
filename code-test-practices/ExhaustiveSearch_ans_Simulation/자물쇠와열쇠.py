@@ -18,15 +18,17 @@ def add_map_lock(key,  lock):
         for column in range(len(lock)):
             map[len(key)+row][len(key)+column]=lock[row][column]
     return map
-def calcul(key, lock,origin_map):
+def calcul(key, lock,map):
     for x in range(1,len(key)+len(lock)):
         for y in range(1,len(key)+len(lock)):
-            map=copy.deepcopy(origin_map)
             for x1 in range(len(key)):
                 for y1 in range(len(key)):
                     map[x+x1][y+y1]+=key[x1][y1]
             if check(map,key,lock)==True:
                 return True
+            for x1 in range(len(key)):
+                for y1 in range(len(key)):
+                    map[x+x1][y+y1]-=key[x1][y1]
             
     return False
                 
@@ -41,4 +43,3 @@ def solution(key, lock):
         if calcul(key,lock,origin_map)==True:
             return True
     return False
-print(solution(	[[0, 0, 0], [1, 0, 0], [0, 1, 1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
