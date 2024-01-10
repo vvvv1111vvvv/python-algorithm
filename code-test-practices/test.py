@@ -1,5 +1,1 @@
-m=[10]
-def lul(x):
-    x.append(20)
-lul(m)
-print(m)
+print(type((-1)%4))
