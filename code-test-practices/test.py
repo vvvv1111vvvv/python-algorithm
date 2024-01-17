@@ -1,3 +1,2 @@
-p='ab f'
 
-print(len(p))
+print((-5)//3)
