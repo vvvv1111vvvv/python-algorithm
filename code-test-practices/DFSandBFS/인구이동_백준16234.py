@@ -28,7 +28,7 @@ def bfs():
                 dx=[-1,0,1,0]
                 dy=[0,-1,0,1]
                 while q:
-                    x,y=q.pop()
+                    x,y=q.popleft()
                     for k in range(4):
                         nx=x+dx[k]
                         ny=y+dy[k]
